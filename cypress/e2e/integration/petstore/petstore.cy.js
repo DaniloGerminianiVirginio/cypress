@@ -28,6 +28,7 @@ describe('Testes de API', () => {
         },
       }).then((response) => {
         expect(response.status).to.eq(200)
+        cy.log("test")
       })
     })
   

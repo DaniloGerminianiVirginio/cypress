@@ -17,14 +17,3 @@ jobs:
         with:
           command: npx cypress run
           browser: chrome
-      
-      - name: Copy test execution videos
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
-      
-      - name: Merge test results into one
-        run: npm run report:merge
-      
-      - name: Generate HTML report
-        run: npm run report:generate

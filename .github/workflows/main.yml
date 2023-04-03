@@ -17,3 +17,9 @@ jobs:
        with:
          command: npx cypress run
          browser: chrome
+         
+     - name: Upload test results
+       uses: actions/upload-artifact@v2
+       with:
+         name: test-results
+         path: cypress/videos/, cypress/screenshots/

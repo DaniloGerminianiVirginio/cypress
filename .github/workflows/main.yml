@@ -6,20 +6,25 @@ on:
       - main
 
 jobs:
- Cypress-Test:
-   runs-on: ubuntu-latest
-   steps:
-     - name: Checkout GitCode
-       uses: actions/checkout@v2
+  Cypress-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitCode
+        uses: actions/checkout@v2
  
-     - name: Run Cypress Test
-       uses: cypress-io/github-action@v4
-       with:
-         command: npx cypress run
-         browser: chrome
-         
-     - name: Upload test results
-       uses: actions/upload-artifact@v2
-       with:
-         name: test-results
-         path: cypress/videos/, cypress/screenshots/
+      - name: Run Cypress Test
+        uses: cypress-io/github-action@v4
+        with:
+          command: npx cypress run
+          browser: chrome
+      
+      - name: Copy test execution videos
+        run: |
+          mkdir public
+          cp -r cypress/videos public/videos
+      
+      - name: Merge test results into one
+        run: npm run report:merge
+      
+      - name: Generate HTML report
+        run: npm run report:generate

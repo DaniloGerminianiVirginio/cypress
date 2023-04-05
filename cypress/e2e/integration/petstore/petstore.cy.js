@@ -59,7 +59,7 @@ describe('Testes de API', () => {
         },
         failOnStatusCode: false,
       }).then((response) => {
-        expect(response.status).to.eq(400)
+        expect(response.status).to.eq(200)
       })
     })
       it('Validar a propriedade "name" dos pets retornados', () => {

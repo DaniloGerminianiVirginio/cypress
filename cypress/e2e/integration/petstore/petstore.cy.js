@@ -47,21 +47,21 @@ describe('Testes de API', () => {
       })
     })
   
-    // it('Validar o status da resposta para status inválido', () => {
-    //   cy.request({
-    //     method: 'GET',
-    //     url: endpointUrl,
-    //     headers: {
-    //       accept: 'application/json',
-    //     },
-    //     qs: {
-    //       status: 'invalid_status',
-    //     },
-    //     failOnStatusCode: false,
-    //   }).then((response) => {
-    //     expect(response.status).to.eq(400)
-    //   })
-    // })
+    it('Validar o status da resposta para status inválido', () => {
+      cy.request({
+        method: 'GET',
+        url: endpointUrl,
+        headers: {
+          accept: 'application/json',
+        },
+        qs: {
+          status: 'invalid_status',
+        },
+        failOnStatusCode: false,
+      }).then((response) => {
+        expect(response.status).to.eq(400)
+      })
+    })
       it('Validar a propriedade "name" dos pets retornados', () => {
         cy.request({
           method: 'GET',
